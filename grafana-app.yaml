@@ -1,0 +1,23 @@
+    apiVersion: argoproj.io/v1alpha1
+    kind: Application
+    metadata:
+      name: grafana-local
+      namespace: argocd # Or the namespace where ArgoCD is installed
+    spec:
+      project: default
+      source:
+        repoURL: <your_git_repo_url> # e.g., https://github.com/your-org/your-repo.git
+        targetRevision: HEAD
+        path: grafana # Path to the directory containing Chart.yaml and values.yaml
+        helm:
+          valueFiles:
+            - values.yaml
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: grafana # Or your desired namespace for Grafana
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
