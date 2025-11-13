@@ -1,7 +1,7 @@
 # values.yaml (example for customization)
 grafana:
   service:
-    type: NodePort # or LoadBalancer if supported by your local setup
+    type: ClusterIP # or LoadBalancer if supported by your local setup
   persistence:
     enabled: true
     storageClassName: standard # or an appropriate storage class for your local cluster
