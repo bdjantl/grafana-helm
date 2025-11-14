@@ -3,5 +3,5 @@ grafana:
   service:
     type: ClusterIP # or LoadBalancer if supported by your local setup
   persistence:
-    enabled: true
+    enabled: false
     storageClassName: standard # or an appropriate storage class for your local cluster
